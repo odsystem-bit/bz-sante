@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" rx="16" fill="#F5F5F5"/>
+  <rect x="32" y="32" width="736" height="40" rx="8" fill="#2A8A1A"/>
+  <rect x="32" y="96" width="200" height="320" rx="8" fill="#E8F5E9"/>
+  <rect x="256" y="96" width="512" height="320" rx="8" fill="#FFFFFF"/>
+  <text x="400" y="270" font-family="Arial" font-size="24" fill="#2A8A1A" text-anchor="middle">Capture d'écran à venir</text>
+  <text x="400" y="300" font-family="Arial" font-size="18" fill="#999999" text-anchor="middle">Dashboard BZ Santé</text>
+</svg>
