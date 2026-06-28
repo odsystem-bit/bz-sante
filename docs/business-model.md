@@ -1,12 +1,12 @@
-# Business Model N'NAKI — BZ Santé
+# Business Model BZ+ — Bureau de Zone Santé
 
-Ce document présente le modèle économique de N'NAKI — BZ Santé, son marché cible, ses revenus et sa stratégie de croissance.
+Ce document présente le modèle économique de **BZ+**, son marché cible, sa proposition de valeur et sa stratégie de déploiement.
 
 ---
 
 ## Vision
 
-N'NAKI vise à construire une IA médicale et un système d'information sanitaire 100% souverains pour la République du Bénin. La plateforme place les données de santé des Béninois sous autorité nationale, tout en modernisant la gestion des zones sanitaires, des statistiques et de l'expertise médicale.
+BZ+ vise à numériser la collecte des données sanitaires dans les Bureaux de Zone du Bénin. Le système simplifie la saisie quotidienne des Centres de Santé, renforce la supervision des zones sanitaires et accélère la remontée des rapports vers les autorités de santé.
 
 ---
 
@@ -14,37 +14,46 @@ N'NAKI vise à construire une IA médicale et un système d'information sanitair
 
 ### Marché primaire
 
-- **Bénin** : Ministère de la Santé, directions départementales, 34 zones sanitaires, établissements de santé.
-- **Utilisateurs** : médecins validateurs, experts contributeurs, administrateurs, réceptionnistes, analystes.
+- **Bénin** : Bureaux de Zone, Zones Sanitaires, Centres de Santé (CS), directions départementales de la Santé.
+- **Utilisateurs** : agents de santé dans les CS, administrateurs de zone, super administrateurs, autorités sanitaires.
 
 ### Segments cibles
 
-- **Ministère de la Santé** : gouvernance, statistiques, alertes épidémiques.
-- **Experts médicaux** : contribution et validation de la base de connaissances IA.
-- **Établissements de santé** : accès aux protocoles, statistiques, dossiers VIP.
-- **Autorités sanitaires** : indicateurs stratégiques et rapports nationaux.
+- **Bureaux de Zone** : supervision et consolidation des données de leurs Centres de Santé.
+- **Centres de Santé** : saisie rapide des données SMI, DPalu, CER et rapports mensuels.
+- **Directions départementales / Ministère** : accès aux statistiques et rapports standardisés.
+- **Organisations de santé** : collecte de données via formulaires personnalisés.
 
 ---
 
 ## Proposition de valeur
 
-### Pour le Ministère de la Santé
+### Pour les Centres de Santé
 
-- Souveraineté des données de santé sur le territoire béninois.
-- Statistiques nationales en temps réel.
-- Outil de décision et d'alerte épidémique.
+- Saisie rapide des données sur web et mobile.
+- Consultation et correction des saisies passées.
+- Réduction des erreurs de transcription et des retards de rapport.
+- Fonctionnement hors-ligne pour les zones mal connectées.
 
-### Pour les experts médicaux
+### Pour les Administrateurs de Zone
 
-- Reconnaissance et rémunération des contributions validées.
-- Participation à une IA médicale nationale.
-- Plateforme de collaboration structurée.
+- Tableau de bord en temps réel de l'activité des CS.
+- Alertes et statistiques épidémiologiques.
+- Export Excel/PDF des données et rapports.
+- Gestion centralisée des codes d'accès et formulaires.
 
-### Pour les établissements de santé
+### Pour les Super Administrateurs
 
-- Accès aux protocoles et directives officielles.
-- Gestion confidentielle des patients VIP.
-- Données centralisées et traçables.
+- Gestion multi-zones et multi-CS.
+- Configuration à distance de l'application mobile.
+- Déploiement des mises à jour via upload APK.
+- Sauvegarde de la base et journal d'activité.
+
+### Pour les autorités sanitaires
+
+- Données consolidées et standardisées.
+- Formats d'export compatibles avec les outils ministériels (DHIS2 / SIGASI).
+- Meilleure réactivité face aux alertes épidémiques.
 
 ---
 
@@ -52,47 +61,55 @@ N'NAKI vise à construire une IA médicale et un système d'information sanitair
 
 | Source de revenu | Description | Statut |
 | :--- | :--- | :--- |
-| Financement ministériel | Contrat avec le Ministère de la Santé pour le portail N'NAKI | En discussion |
-| Contributions rémunérées | Paiement des experts pour contributions validées | Actif |
-| Licences établissements | Tarification par hôpital/zone pour les modules avancés | À définir |
-| Formation et support | Accompagnement des équipes sanitaires | À définir |
-| Intégrations DHIS2 | Connecteurs avec le système d'information national | À définir |
+| Abonnement par Bureau de Zone | Licence annuelle par zone sanitaire déployée | À définir |
+| Mise en place et déploiement | Installation, configuration, import initial des CS | À définir |
+| Formation et support | Accompagnement des agents de santé et administrateurs | À définir |
+| Développements sur mesure | Formulaires personnalisés, intégrations spécifiques | À définir |
+| Intégration DHIS2 / SIGASI | Connecteurs pour les remontées ministérielles | À venir |
 
 ---
 
 ## Stratégie de croissance
 
-### Phase 1 : Portail N'NAKI (Terminé)
+### Phase 1 : Prototype web (Terminé)
 
-- Déploiement du portail web et des dashboards.
-- Hiérarchie administrative, IA, contributeurs, VIP, gouvernance, langues.
+- Saisie web SMI et DPalu pour un Bureau de Zone.
+- Structure de base SQLite et exports Excel.
 
-### Phase 2 : Backend et centralisation
+### Phase 2 : Application mobile et hors-ligne (Terminé)
 
-- Backend API et base de données centralisée au Bénin.
-- Authentification, rôles et permissions.
+- Application Android BZ+.
+- Mode hors-ligne avec synchronisation différée.
+- Formulaires personnalisés.
 
-### Phase 3 : Mobile et terrain
+### Phase 3 : Déploiement ATZ en production (En cours)
 
-- Application mobile pour agents de santé.
-- Saisie hors ligne et synchronisation.
+- Déploiement sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+- Onboarding des CS de la Zone Sanitaire Allada-Toffo-Zè.
+- Tableau de bord, statistiques, alertes et exports.
 
-### Phase 4 : Expansion nationale
+### Phase 4 : Expansion multi-zone
 
-- Déploiement dans les 34 zones sanitaires.
-- Intégration DHIS2 et systèmes ministériels.
+- Déploiement dans d'autres Bureaux de Zone du Bénin.
+- Multi-tenant et base de données centralisée.
+
+### Phase 5 : Intégration nationale
+
+- Export DHIS2 / SIGASI.
+- Tableaux de bord pour les directions départementales.
 
 ---
 
 ## Indicateurs clés (KPIs)
 
-- Nombre de contributeurs actifs.
-- Nombre de contributions validées.
-- Nombre de pathologies en base de connaissances.
-- Nombre de patients VIP gérés.
-- Nombre de consultations et indicateurs saisis.
-- Taux de qualité des données.
-- Temps de réponse des alertes épidémiques.
+- Nombre de Centres de Santé actifs.
+- Nombre de saisies SMI / DPalu par jour.
+- Taux de remplissage des CER hebdomadaires.
+- Nombre de formulaires publiés et de réponses.
+- Taux d'utilisation de l'application mobile.
+- Nombre de zones déployées.
+- Temps de remontée des rapports mensuels.
+- Taux de synchronisation réussie en mode hors-ligne.
 
 ---
 
@@ -100,14 +117,14 @@ N'NAKI vise à construire une IA médicale et un système d'information sanitair
 
 > Les projections détaillées seront ajoutées dans une version ultérieure du document.
 
-- **Année 1** : consolidation du portail, onboarding des contributeurs, 5-10 pathologies validées.
-- **Année 2** : expansion régionale, 20+ zones de santé.
-- **Année 3** : expansion nationale, partenariats ministériels.
+- **Année 1** : consolidation du déploiement ATZ, onboarding de 30+ CS.
+- **Année 2** : expansion vers 5-10 Bureaux de Zone supplémentaires.
+- **Année 3** : couverture nationale et intégration aux systèmes ministériels.
 
 ---
 
 ## Besoins et partenariats
 
-- **Investissement** : développement mobile, backend, formation, support.
-- **Partenaires** : ministère de la Santé, ONG santé, organisations internationales.
-- **Programmes** : fonds d'innovation santé, incubateurs sociaux.
+- **Investissement** : développement mobile, cloud, formation, support terrain.
+- **Partenaires** : Ministère de la Santé, Bureaux de Zone, ONG santé, organisations internationales.
+- **Programmes** : fonds d'innovation santé, incubateurs sociaux, coopérations techniques.

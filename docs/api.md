@@ -1,22 +1,25 @@
-# API N'NAKI — BZ Santé
+# API BZ+ — Bureau de Zone Santé
 
-Ce document décrit l'API interne de N'NAKI v1.0 et la roadmap de l'API publique v2.0.
+Ce document décrit les endpoints web et l'API mobile de **BZ+**, utilisés par le site web et l'application Android pour la saisie et la synchronisation des données sanitaires.
 
 ---
 
 ## Introduction
 
-N'NAKI v1.0 est un portail web avec données gérées côté client (localStorage). L'API publique v2.0 permettra aux applications mobiles, aux dashboards et aux systèmes partenaires (DHIS2) d'interagir avec la plateforme.
+BZ+ fonctionne comme une application web monolithique Node.js / Express avec une API dédiée à l'application mobile. L'API mobile utilise des tokens pour l'authentification et supporte le mode hors-ligne avec synchronisation différée.
 
 ---
 
-## Authentification v1.0
+## Authentification web
 
-La v1.0 utilise un contrôle d'accès basé sur les rôles et les codes d'accès. L'authentification formelle sera intégrée en v2.0.
+Le site web utilise des sessions Express sécurisées :
+- Connexion CS par zone + CS + code d'accès à 6 chiffres.
+- Connexion admin par nom d'utilisateur et mot de passe.
+- Connexion super admin par URL `/super/login` et credentials dédiés.
 
-## Authentification v2.0 (publique)
+## Authentification API mobile
 
-L'API publique utilisera des tokens Bearer avec gestion des rôles.
+L'application mobile s'authentifie par token. Les tokens expirent après 30 jours d'inactivité.
 
 ```http
 Authorization: Bearer {token}
@@ -24,7 +27,7 @@ Authorization: Bearer {token}
 
 ---
 
-## En-têtes communs v2.0
+## En-têtes communs API
 
 ```http
 Content-Type: application/json
@@ -34,60 +37,85 @@ Authorization: Bearer {token}
 
 ---
 
-## Endpoints v2.0 (roadmap)
+## Endpoints API mobile
 
 ### Authentification
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| POST | `/api/v1/auth/login` | Se connecter |
-| POST | `/api/v1/auth/logout` | Se déconnecter |
-| GET | `/api/v1/auth/me` | Profil connecté |
+| POST | `/api/mobile/auth/login` | Connexion CS (zone + CS + code) |
+| POST | `/api/mobile/auth/logout` | Déconnexion et révocation du token |
+| GET | `/api/mobile/auth/me` | Profil et CS connecté |
+| POST | `/api/mobile/auth/refresh` | Rafraîchissement du token |
 
-### Hiérarchie administrative
-
-| Méthode | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/v1/departments` | Lister les directions départementales |
-| GET | `/api/v1/departments/{id}` | Détails d'une direction |
-| GET | `/api/v1/zones` | Lister les zones sanitaires |
-| GET | `/api/v1/establishments` | Lister les établissements |
-
-### Contributions IA
+### Configuration et zones
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| GET | `/api/v1/contributions` | Lister les contributions |
-| POST | `/api/v1/contributions` | Soumettre une contribution |
-| POST | `/api/v1/contributions/{id}/validate` | Valider une contribution |
-| POST | `/api/v1/contributions/{id}/reject` | Rejeter une contribution |
+| GET | `/api/mobile/config` | Configuration à distance (feature flags, nom, contacts) |
+| GET | `/api/mobile/zones` | Liste des zones sanitaires |
+| GET | `/api/mobile/zones/{id}/centres` | Centres de Santé d'une zone |
+| GET | `/api/mobile/app-version` | Version minimale et lien APK |
 
-### Patients VIP
-
-| Méthode | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/v1/vip-patients` | Lister les patients VIP |
-| POST | `/api/v1/vip-patients` | Créer un patient VIP |
-| POST | `/api/v1/vip-access-requests` | Demander un accès VIP |
-| POST | `/api/v1/vip-access-requests/{id}/approve` | Approuver une demande |
-| GET | `/api/v1/vip-access-logs` | Journal des accès VIP |
-
-### Statistiques
+### Saisie des données
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| GET | `/api/v1/statistics/national` | Statistiques nationales |
-| GET | `/api/v1/statistics/departments/{id}` | Statistiques par département |
-| GET | `/api/v1/indicators` | Indicateurs sanitaires |
-| GET | `/api/v1/alerts` | Alertes épidémiques |
+| POST | `/api/mobile/saisies/smi` | Enregistrer une saisie SMI |
+| POST | `/api/mobile/saisies/dpalu` | Enregistrer une saisie DPalu |
+| POST | `/api/mobile/saisies/cer` | Enregistrer un CER hebdomadaire |
+| POST | `/api/mobile/saisies/rapports` | Enregistrer un rapport mensuel |
+| POST | `/api/mobile/saisies/sync` | Synchronisation batch (mode hors-ligne) |
+| GET | `/api/mobile/saisies/{type}` | Consulter ses saisies |
 
-### Export
+### Formulaires
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| GET | `/api/v1/exports/dhis2` | Export au format DHIS2 |
-| GET | `/api/v1/exports/pdf` | Export PDF |
-| GET | `/api/v1/exports/excel` | Export Excel |
+| GET | `/api/mobile/formulaires` | Liste des formulaires publiés |
+| POST | `/api/mobile/formulaires/{id}/reponses` | Soumettre une réponse |
+| GET | `/api/mobile/formulaires/mes-reponses` | Réponses du CS connecté |
+
+### Export et résumé
+
+| Méthode | Endpoint | Description |
+| :--- | :--- | :--- |
+| GET | `/api/mobile/resume-mensuel` | Résumé mensuel du CS |
+| GET | `/api/mobile/export/excel` | Export Excel des données du CS |
+| GET | `/api/mobile/export/pdf` | Export PDF des données du CS |
+
+---
+
+## Endpoints web principaux
+
+### Espace CS
+- `GET /cs/login` — Connexion Centre de Santé.
+- `POST /cs/saisie/smi` — Saisie SMI.
+- `POST /cs/saisie/dpalu` — Saisie DPalu.
+- `POST /cs/saisie/cer` — Saisie CER.
+- `GET /cs/consulter` — Consultation des données.
+- `GET /cs/resume` — Résumé mensuel.
+- `GET /cs/formulaires` — Formulaires personnalisés.
+
+### Espace Admin
+- `GET /admin/login` — Connexion administrateur.
+- `GET /admin/dashboard` — Tableau de bord de la zone.
+- `GET /admin/statistiques` — Statistiques et alertes.
+- `GET /admin/cer` — Surveillance CER.
+- `GET /admin/rapports` — Rapports mensuels.
+- `GET /admin/resume` — Résumé mensuel zone.
+- `GET /admin/exporter` — Export des données brutes.
+- `GET /admin/parametres` — Codes d'accès et formulaires.
+
+### Espace Super Admin
+- `GET /super/login` — Connexion Super Admin.
+- `GET /super/zones` — Gestion des zones.
+- `GET /super/centres` — Gestion des CS.
+- `GET /super/admins` — Gestion des administrateurs.
+- `GET /super/config` — Configuration à distance.
+- `GET /super/apk` — Upload APK.
+- `GET /super/backup` — Sauvegarde de la base.
+- `GET /super/logs` — Journal d'activité.
 
 ---
 
@@ -102,14 +130,14 @@ Authorization: Bearer {token}
 | 403 | Non autorisé |
 | 404 | Ressource non trouvée |
 | 422 | Erreur de validation |
+| 429 | Trop de requêtes (rate limiting) |
 | 500 | Erreur serveur |
 
 ---
 
 ## Prochaines étapes
 
-- [ ] Définir les schémas complets de requête et réponse
-- [ ] Rédiger les spécifications d'authentification
-- [ ] Documenter les flux de validation IA par pairs
-- [ ] Documenter le workflow d'accès VIP
-- [ ] Publier une collection Postman
+- [ ] Documenter les schémas complets de requête et réponse de l'API mobile.
+- [ ] Publier une collection Postman pour l'API mobile.
+- [ ] Spécifier le flux de synchronisation hors-ligne (conflits, retry).
+- [ ] Documenter les endpoints d'export DHIS2 / SIGASI.

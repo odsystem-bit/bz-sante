@@ -5,6 +5,18 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère à [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [0.3.0] - 2026-06-28
+
+### Corrigé
+- Refonte complète de la documentation pour refléter la réalité du projet : **BZ+** (Bureau de Zone Santé) et non N'NAKI.
+- `README.md` : présentation BZ+, site web + application mobile, saisie SMI/DPalu/CER, rapports mensuels, tableau de bord admin, super administration, exports.
+- `docs/features.md` : fonctionnalités réelles (saisie CS, admin, super admin, formulaires, mobile hors-ligne, statistiques, exports).
+- `docs/architecture.md` : architecture Node.js/Express, SQLite, EJS, Flutter, hébergement Hostinger.
+- `docs/business-model.md` : modèle économique autour des Bureaux de Zone et du déploiement multi-zone.
+- `docs/api.md` : endpoints web et API mobile (saisie, sync, formulaires, config, export).
+- `docs/faq.md` : FAQ corrigée avec les questions réelles des utilisateurs BZ+.
+- `ROADMAP.md` : v1.0 prototype, v2.0 mobile, v2.1 ATZ en production, v2.2 multi-zone, v3.0 intégration nationale.
+
 ## [0.2.0] - 2026-06-28
 
 ### Mis à jour

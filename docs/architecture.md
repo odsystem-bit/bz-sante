@@ -1,80 +1,93 @@
-# Architecture N'NAKI — BZ Santé
+# Architecture BZ+ — Bureau de Zone Santé
 
-Ce document présente l'architecture générale de N'NAKI — BZ Santé, déployé en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+Ce document présente l'architecture générale de **BZ+**, système de saisie et de supervision des données sanitaires des Bureaux de Zone, déployé en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
 ## Vue d'ensemble
 
-N'NAKI est une plateforme web souveraine de gestion de l'IA médicale et des données sanitaires du Bénin. Elle connecte le Ministère de la Santé, les directions départementales, les zones sanitaires, les experts médicaux et les établissements de santé.
+BZ+ est un système web + mobile de collecte des données sanitaires au niveau des Bureaux de Zone du Bénin. Il connecte les Centres de Santé (CS), les Administrateurs de Zone et les Super Administrateurs dans une architecture légère et déployable sur infrastructure mutualisée.
 
 ```
-┌────────────────────────────────────────────────────────────────┐
-│                         Utilisateurs                            │
-│  Ministère    Validateurs    Contributeurs    Réceptionnistes  │
-└───────────────────────┬───────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                         Utilisateurs                             │
+│  Super Admin    Admin de Zone    Centre de Santé (CS)           │
+└───────────────────────┬─────────────────────────────────────────┘
                         │
-┌───────────────────────▼───────────────────────────────────────┐
-│                      Interfaces Web                            │
-│  Portail N'NAKI · Dashboard IA · Gestion VIP · Statistiques   │
-└───────────────────────┬───────────────────────────────────────┘
-                        │ HTTPS
-┌───────────────────────▼───────────────────────────────────────┐
-│                   Backend API (roadmap v2.0)                   │
-│  Auth · Hiérarchie · Contributions IA · VIP · Statistiques     │
-└───────────────────────┬───────────────────────────────────────┘
+        ┌───────────────┼───────────────┐
+        │               │               │
+┌───────▼──────┐ ┌──────▼──────┐ ┌─────▼──────┐
+│  Site Web    │ │  API /      │ │  App Mobile│
+│  (EJS/HTML)  │ │  Backend    │ │  (Flutter) │
+│              │ │  (Node.js)  │ │            │
+└───────┬──────┘ └──────┬──────┘ └─────┬──────┘
+        │               │               │
+        └───────────────┴───────────────┘
                         │
-        ┌───────────────┼───────────────┬───────────────┐
-        │               │               │               │
-┌───────▼──────┐ ┌──────▼──────┐ ┌──────▼──────┐ ┌──────▼──────┐
-│  PostgreSQL  │ │   Redis     │ │ File Storage│ │   DHIS2    │
-│  (souverain) │ │   (cache)   │ │  (exports)  │ │  (export)  │
-└──────────────┘ └─────────────┘ └─────────────┘ └─────────────┘
+        ┌───────────────┼───────────────┐
+        │               │               │
+┌───────▼──────┐ ┌──────▼──────┐ ┌──────▼──────┐
+│   SQLite     │ │  File       │ │  Tokens    │
+│  (sante.db)  │ │  Storage    │ │  API Mobile│
+│              │ │  (exports)  │ │            │
+└──────────────┘ └─────────────┘ └─────────────┘
 ```
 
 ---
 
 ## Couches applicatives
 
-### 1. Portail web N'NAKI
+### 1. Site web BZ+
 
-- HTML5, CSS3, JavaScript vanilla, Chart.js.
-- Interface responsive organisée par modules fonctionnels.
-- Accès adapté aux rôles (administration, validation, contribution, réception).
+- **Moteur** : Node.js / Express avec EJS comme moteur de templates.
+- **Frontend** : HTML5, CSS3, Bootstrap, JavaScript vanilla.
+- **Visualisation** : Chart.js pour les statistiques et alertes.
+- **Pages publiques** : accueil, connexion CS, connexion admin, connexion super admin.
+- **Pages protégées** : saisie, consultation, tableau de bord, statistiques, formulaires, paramètres.
 
-### 2. Backend API (v2.0)
+### 2. Backend API
 
-- **Framework** : Node.js / NestJS (roadmap).
-- **Base de données** : PostgreSQL hébergée au Bénin.
-- **Authentification** : sessions sécurisées avec rôles.
-- **Validation IA** : workflow de soumission et validation par pairs.
-- **Exports** : DHIS2, PDF, Excel.
+- **Framework** : Node.js / Express.
+- **Base de données** : SQLite (`better-sqlite3`) avec structure fidèle aux registres Excel nationaux.
+- **Authentification** : sessions Express côté web, tokens API côté mobile.
+- **Sécurité** : Helmet, rate limiting, CSP, HTTPS forcé, tokens avec expiration.
+- **Exports** : Excel (xlsx) et PDF (pdfkit).
 
-### 3. Stockage
+### 3. Application mobile BZ+ (Flutter)
 
-- Données sanitaires hébergées en République du Bénin.
-- localStorage utilisé pour la démonstration en v1.0.
-- Fichiers d'export et rapports stockés localement.
+- **Plateforme** : Android (APK).
+- **Mode hors-ligne** : stockage local et synchronisation différée avec le backend.
+- **Mise à jour OTA** : vérification de version et téléchargement d'APK depuis le backend.
+- **Configuration distante** : feature flags et paramètres récupérés depuis le serveur.
+
+### 4. Stockage
+
+- **Base de données** : SQLite hébergée sur le serveur (`sante.db`).
+- **Fichiers** : exports Excel/PDF, uploads APK, images de formulaires.
+- **Sauvegarde** : export manuel de la base depuis le panneau Super Admin.
 
 ---
 
 ## Modèle de sécurité
 
-- Authentification par rôle avec contrôle d'accès.
-- Codes d'accès VIP spécifiques par niveau (Président, Ministre, Député, Diplomate).
-- Journalisation des accès et des tentatives échouées.
-- Blocage automatique après tentatives répétées.
-- Données de santé chiffrées et hébergées localement.
-- Conformité aux principes de protection des données personnelles et de santé.
+- **Authentification par rôle** : Super Admin, Admin de Zone, Centre de Santé.
+- **Codes d'accès CS** : codes à 6 chiffres générés automatiquement.
+- **Mots de passe admin** : minimum 8 caractères, réinitialisation par Super Admin.
+- **Sessions** : httpOnly, sameSite, expiration 8h, cookie personnalisé.
+- **Rate limiting** : 10 tentatives de connexion par 15 minutes, 60 requêtes API par minute.
+- **Blocs** : blocage après 5 tentatives échouées (30 minutes).
+- **HTTPS forcé** : redirection automatique en production.
+- **Headers de sécurité** : Helmet + CSP personnalisée.
+- **Audit** : journal d'activité des administrateurs.
 
 ---
 
 ## Scalabilité
 
-- Architecture modulaire facilitant l'évolution.
-- Cache Redis pour les données fréquemment consultées.
-- Préparation au déploiement cloud souverain.
-- Export incrémental vers DHIS2.
+- **Modularité** : routes Express séparées par domaine (auth, saisie, admin, super admin, API mobile).
+- **Légèreté** : SQLite suffisant pour les déploiements mono-zone, migrable vers PostgreSQL si besoin.
+- **Déploiement** : Hostinger VPS avec Node.js, PM2 et Nginx.
+- **Future intégration** : export DHIS2 / SIGASI pour les remontées ministérielles.
 
 ---
 
@@ -82,17 +95,17 @@ N'NAKI est une plateforme web souveraine de gestion de l'IA médicale et des don
 
 | Environnement | Usage | Statut |
 | :--- | :--- | :--- |
-| Local | Développement | Actif |
-| Production v1.0 | [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech) | Actif |
-| Staging v2.0 | Tests et recettes | À venir |
-| Production v2.0 | Backend API + base centralisée | À venir |
+| Local | Développement et tests | Actif |
+| Production v2.1 | Bureau de Zone ATZ — [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech) | Actif |
+| Staging | Tests multi-zones | À venir |
+| Production v2.2 | Multi-zones + synchronisation cloud | En cours |
 
 ---
 
 ## Prochaines étapes documentaires
 
-- [ ] Schéma détaillé de la base de données
-- [ ] Diagrammes de séquence des flux critiques (validation IA, accès VIP)
-- [ ] Spécification des endpoints API
-- [ ] Matrice des rôles et permissions
-- [ ] Plan de déploiement souverain et de monitoring
+- [ ] Schéma détaillé de la base de données SQLite.
+- [ ] Diagrammes de séquence des flux critiques (synchronisation mobile, exports).
+- [ ] Spécification complète des endpoints API mobile.
+- [ ] Matrice des rôles et permissions.
+- [ ] Plan de déploiement multi-zone et de monitoring.

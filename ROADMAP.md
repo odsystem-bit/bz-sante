@@ -1,68 +1,65 @@
-# Roadmap N'NAKI — BZ Santé
+# Roadmap BZ+ — Bureau de Zone Santé
 
-Cette feuille de route présente les grandes étapes de développement de N'NAKI — BZ Santé, de la v1.0 en production à la v2.0 en développement.
-
----
-
-## v1.0 — Portail N'NAKI en production
-
-**Objectif** : déployer le portail web souverain du Ministère de la Santé.
-
-- [x] Structure du dépôt public et documentation initiale
-- [x] Portail web N'NAKI avec dashboard ministériel
-- [x] Hiérarchie administrative (12 départements, 34 zones sanitaires, établissements)
-- [x] IA médicale avec espace contributeurs et validation par pairs
-- [x] Gestion des patients VIP (Président, Ministre, Député, Diplomate)
-- [x] Gouvernance médicale et protocoles
-- [x] Statistiques nationales et indicateurs sanitaires
-- [x] Alertes épidémiques et export DHIS2
-- [x] Espace langues locales (Fon, Yoruba, Dendi)
-- [x] Déploiement en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech)
+Cette feuille de route présente les grandes étapes de développement de **BZ+**, de la v1.0 au déploiement national.
 
 ---
 
-## v1.x — Consolidation
+## v1.0 — Prototype de saisie web
 
-**Objectif** : stabiliser la production et corriger les anomalies.
+**Objectif** : valider la saisie numérique des données sanitaires dans un Bureau de Zone.
 
-- [ ] Correction des bugs remontés par les utilisateurs
-- [ ] Amélioration de la sécurité et de l'audit
-- [ ] Documentation métier et guides utilisateurs
-- [ ] Tests avec les autorités sanitaires
-
----
-
-## v2.0 — Backend et centralisation
-
-**Objectif** : migrer vers une infrastructure robuste avec backend API.
-
-- [ ] Backend API Node.js / NestJS
-- [ ] Base de données PostgreSQL hébergée au Bénin
-- [ ] Authentification et gestion des rôles
-- [ ] API publique pour les intégrations
-- [ ] CI/CD et monitoring
+- [x] Saisie web SMI et DPalu.
+- [x] Structure SQLite fidèle aux registres Excel.
+- [x] Export Excel basique.
 
 ---
 
-## v2.1 — Mobile et terrain
+## v2.0 — Application mobile et formulaires
 
-**Objectif** : étendre N'NAKI sur le terrain.
+**Objectif** : étendre la saisie sur le terrain avec l'application Android.
 
-- [ ] Application mobile pour agents de santé
-- [ ] Saisie hors ligne et synchronisation
-- [ ] Intégration des centres de santé dans les zones
-- [ ] Module patients, consultations, maternité et vaccination
+- [x] Application mobile BZ+ (Flutter).
+- [x] Saisie hors-ligne avec stockage local.
+- [x] Synchronisation différée avec le serveur.
+- [x] Formulaires personnalisés (web + mobile).
+- [x] Gestion des tokens API et configuration distante.
 
 ---
 
-## v2.2 — Expansion nationale
+## v2.1 — Déploiement ATZ en production
 
-**Objectif** : généraliser l'usage au Bénin.
+**Objectif** : déployer et stabiliser le système pour la Zone Sanitaire Allada-Toffo-Zè.
 
-- [ ] Déploiement dans les 34 zones sanitaires
-- [ ] Intégration DHIS2 et systèmes ministériels
-- [ ] Formation et support à grande échelle
-- [ ] Partenariats internationaux et souveraineté numérique
+- [x] Site web déployé sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+- [x] Tableau de bord administrateur.
+- [x] Statistiques, alertes et classement des CS.
+- [x] Surveillance CER et rapports mensuels (C6, PNLP1, MNT, C15).
+- [x] Export Excel et PDF.
+- [x] Gestion des codes d'accès et formulaires.
+- [x] Super administration : zones, CS, admins, config mobile, APK, backup.
+- [x] Sécurité : sessions, rate limiting, HTTPS, Helmet, CSP.
+
+---
+
+## v2.2 — Multi-zone et cloud
+
+**Objectif** : généraliser le déploiement à plusieurs Bureaux de Zone.
+
+- [ ] Gestion multi-tenant.
+- [ ] Synchronisation cloud et base de données centralisée.
+- [ ] Amélioration du mode hors-ligne (sync automatique, gestion des conflits).
+- [ ] Notifications automatiques (alertes CER, rappels de saisie).
+
+---
+
+## v3.0 — Intégration nationale
+
+**Objectif** : connecter BZ+ aux systèmes d'information sanitaires nationaux.
+
+- [ ] Export DHIS2 / SIGASI.
+- [ ] Tableaux de bord pour les directions départementales.
+- [ ] API publique pour les intégrations partenaires.
+- [ ] Formation et support à grande échelle.
 
 ---
 

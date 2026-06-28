@@ -1,42 +1,54 @@
-# FAQ N'NAKI — BZ Santé
+# FAQ BZ+ — Bureau de Zone Santé
 
 ## Général
 
-### Qu'est-ce que N'NAKI — BZ Santé ?
+### Qu'est-ce que BZ+ ?
 
-N'NAKI — BZ Santé est le portail numérique du Ministère de la Santé du Bénin pour la gestion souveraine de l'IA médicale, des données sanitaires et de la hiérarchie administrative. Il est accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+**BZ+** (Bureau de Zone Santé) est un système de saisie et de supervision des données sanitaires conçu pour les Bureaux de Zone du Bénin. Il permet aux Centres de Santé (CS) de saisir leurs données quotidiennes et hebdomadaires, et aux Administrateurs de Zone de superviser, consulter et exporter ces données. Il est accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
-### Quel problème N'NAKI résout-il ?
+### Quel problème BZ+ résout-il ?
 
-N'NAKI résout la fragmentation des données de santé, le manque d'IA médicale locale et la difficulté de gestion des zones sanitaires, tout en garantissant la souveraineté des données des Béninois.
+BZ+ résout la lenteur et les erreurs de la saisie papier, la difficulté de consolidation des données de plusieurs CS, les retards de remontée des rapports et le manque de visibilité en temps réel pour les administrateurs de zone.
 
-### Qui peut utiliser N'NAKI ?
+### Qui peut utiliser BZ+ ?
 
-- **Administrateurs** : gestion de la hiérarchie, de la gouvernance et des utilisateurs.
-- **Validateurs** : experts médicaux qui valident les contributions IA.
-- **Contributeurs** : experts qui enrichissent la base de connaissances.
-- **Réceptionnistes** : gestion des accès aux patients VIP.
-- **Analystes** : consultation des statistiques nationales.
+- **Centre de Santé (CS)** : saisie des données SMI, DPalu, CER et rapports mensuels.
+- **Administrateur de Zone** : supervision des CS, exports, statistiques et gestion des codes d'accès.
+- **Super Administrateur** : gestion des zones, des CS, des administrateurs, configuration mobile et sauvegarde.
 
-### N'NAKI est-il déjà en ligne ?
+### BZ+ est-il déjà en ligne ?
 
-Oui, la version 1.0 du portail est en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+Oui, la version 2.1 est en production pour le Bureau de Zone ATZ sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
 ## Utilisation
 
-### Comment fonctionne l'IA médicale N'NAKI ?
+### Comment se connecte un Centre de Santé ?
 
-Les experts soumettent des contributions médicales. Chaque contribution est validée par au moins 3 validateurs sur 4 avant d'être intégrée à la base de connaissances IA.
+1. Ouvrez le site et cliquez sur **Accès Centre de Santé**.
+2. Sélectionnez votre zone sanitaire.
+3. Sélectionnez votre Centre de Santé.
+4. Entrez le code d'accès à 6 chiffres fourni par votre administrateur.
 
-### Comment sont gérés les patients VIP ?
+### Quelles sont les données à saisir ?
 
-Les dossiers VIP sont anonymisés et protégés par des codes d'accès spécifiques. Les demandes d'accès sont justifiées et validées, avec journalisation de chaque consultation.
+- **SMI** : Santé Maternelle et Infantile (CPN, accouchements, enfants, planification familiale, etc.).
+- **DPalu** : Registre Paludisme (dispensaire, maternité, ruptures de stock).
+- **CER** : Surveillance épidémiologique hebdomadaire (28 maladies, décès, flambées, paludisme).
+- **Rapports mensuels** : C6, PNLP1, MNT, C15.
 
-### Quelles langues locales sont supportées ?
+### Comment corriger une saisie ?
 
-N'NAKI intègre progressivement les langues locales du Bénin : Fon, Yoruba, Dendi, et autres. Les contributeurs peuvent proposer des traductions et termes médicaux.
+Sélectionnez la même date et la même section. Les données existantes seront chargées et vous pourrez les modifier.
+
+### L'application mobile fonctionne-t-elle sans internet ?
+
+Oui, l'application BZ+ dispose d'un mode hors-ligne. Les saisies sont stockées localement et synchronisées automatiquement dès que la connexion revient. Le mode hors-ligne doit être activé par le Super Admin.
+
+### Comment mettre à jour l'application mobile ?
+
+Allez dans **Paramètres** → **Mise à jour** dans l'application. Si une nouvelle version est disponible, téléchargez et installez l'APK. Le Super Admin peut aussi publier une mise à jour depuis le panneau **Upload APK**.
 
 ---
 
@@ -44,15 +56,28 @@ N'NAKI intègre progressivement les langues locales du Bénin : Fon, Yoruba, Den
 
 ### Les données de santé sont-elles protégées ?
 
-Oui, N'NAKI applique le chiffrement, la journalisation des accès, le contrôle des codes VIP et l'hébergement des données au Bénin. Les données des patients VIP sont particulièrement protégées.
+Oui, BZ+ applique :
+- Le HTTPS forcé en production.
+- La protection des sessions (httpOnly, sameSite).
+- Le rate limiting et la protection CSRF.
+- Les headers de sécurité via Helmet.
+- Les codes d'accès CS et les mots de passe admin.
+- Le blocage après 5 tentatives de connexion échouées.
 
 ### Où sont hébergées les données ?
 
-Les données de santé sont hébergées en République du Bénin, conformément à la politique de souveraineté numérique du Ministère de la Santé.
+La base de données SQLite est hébergée sur le serveur de production (Hostinger). Les sauvegardes sont disponibles depuis le panneau Super Admin.
 
 ### Qui a accès aux données ?
 
-Seuls les utilisateurs autorisés selon leur rôle peuvent accéder aux données. Les accès aux dossiers VIP sont strictement contrôlés et audités.
+Seuls les utilisateurs autorisés selon leur rôle peuvent accéder aux données :
+- Un CS ne voit que ses propres données.
+- Un admin de zone voit les données de tous les CS de sa zone.
+- Un Super Admin gère la structure et la configuration.
+
+### Comment récupérer son code d'accès CS ?
+
+Contactez votre administrateur de zone. Il peut voir et modifier votre code dans **Paramètres → Codes d'accès**.
 
 ---
 
@@ -64,7 +89,7 @@ Vous pouvez nous contacter via les coordonnées disponibles dans le [`README.md`
 
 ### Où trouver la documentation technique ?
 
-La documentation est disponible dans le dossier [`docs/`](./).
+La documentation est disponible dans le dossier [`docs/`](./) et dans le fichier [`DOCUMENTATION_UTILISATION.md`](https://github.com/odsystem-bit/bz-sante/blob/main/DOCUMENTATION_UTILISATION.md) du dépôt.
 
 ---
 

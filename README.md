@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="assets/banner.svg" alt="N'NAKI Banner" width="100%" />
+  <img src="assets/banner.svg" alt="BZ+ Banner" width="100%" />
 </div>
 
 <div align="center">
-  <img src="assets/logo/logo-placeholder.svg" alt="N'NAKI Logo" width="120" height="120" />
-  <h1>N'NAKI — BZ Santé</h1>
-  <p><strong>Plateforme souveraine d'IA médicale et de gestion sanitaire du Bénin</strong></p>
+  <img src="assets/logo/logo-placeholder.svg" alt="BZ+ Logo" width="120" height="120" />
+  <h1>BZ+ — Bureau de Zone Santé</h1>
+  <p><strong>Système de saisie et de supervision des données sanitaires pour les Bureaux de Zone du Bénin</strong></p>
   <p>
-    <img src="https://img.shields.io/badge/Status-En%20production%20%28v1.0%29-2A8A1A?style=flat-square" alt="Status" />
-    <img src="https://img.shields.io/badge/Version-1.0.0-1D3C6E?style=flat-square" alt="Version" />
+    <img src="https://img.shields.io/badge/Status-En%20production%20%28v2.1.0%29-2A8A1A?style=flat-square" alt="Status" />
+    <img src="https://img.shields.io/badge/Version-2.1.0-1D3C6E?style=flat-square" alt="Version" />
     <img src="https://img.shields.io/badge/License-MIT-F5A800?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/badge/Marché-Bénin-CC1A1A?style=flat-square" alt="Marché" />
+    <img src="https://img.shields.io/badge/Zone%20pilote-ATZ%20%28Allada-Toffo-Z%C3%A8%29-CC1A1A?style=flat-square" alt="Zone" />
   </p>
 </div>
 
@@ -34,50 +34,77 @@
 
 ## Présentation
 
-**N'NAKI — BZ Santé** est le portail numérique du Ministère de la Santé du Bénin pour la gestion souveraine de l'IA médicale, des données sanitaires et de la hiérarchie administrative du système de santé.
+**BZ+** (Bureau de Zone Santé) est un système de gestion des données sanitaires conçu pour les Bureaux de Zone du Bénin. Il permet aux Centres de Santé (CS) de saisir leurs données quotidiennes et hebdomadaires, et aux Administrateurs de Zone de superviser, consulter et exporter ces données.
 
-Déployé en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech), la plateforme connecte les directions départementales, les zones sanitaires, les établissements de santé, les experts médicaux contributeurs et les patients VIP sous protocole ministériel.
+La version actuelle est déployée en production pour le **Bureau de Zone ATZ** (Zone Sanitaire Allada-Toffo-Zè, Département du ZOU) sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+
+Le système comprend :
+- Un **site web** accessible depuis n'importe quel navigateur.
+- Une **application mobile Android** (BZ+) pour la saisie sur le terrain.
 
 ---
 
 ## Le problème
 
-Le système de santé béninois fait face à plusieurs défis :
-- Données de santé fragmentées et non sécurisées.
-- Absence d'IA médicale souveraine adaptée au contexte local.
-- Difficulté à suivre la hiérarchie administrative (12 directions, 34 zones sanitaires, établissements).
-- Gestion confidentielle des dossiers VIP (hautes personnalités, diplomates).
-- Manque d'outils de statistiques nationales et d'alertes épidémiques en temps réel.
-- Nécessité de préserver les données de santé des Béninois sur le territoire national.
+Dans les zones sanitaires béninoises, la collecte des données sanitaires fait face à plusieurs défis :
+- Saisie manuelle sur papier, lente et sujette aux erreurs.
+- Difficulté de consolidation des données de plusieurs Centres de Santé.
+- Retards dans la remontée des rapports mensuels et hebdomadaires.
+- Manque de visibilité en temps réel pour les administrateurs de zone.
+- Accès limité à internet dans certaines zones rurales.
+- Besoin de formats d'export standardisés (Excel, PDF) pour les rapports ministériels.
 
 ---
 
 ## La solution
 
-N'NAKI propose un écosystème numérique 100% souverain composé de :
+BZ+ propose un écosystème numérique adapté aux réalités du terrain :
 
-- **Portail N'NAKI** : accès centralisé aux modules sanitaires.
-- **IA médicale N'NAKI** : base de connaissances validée par des experts médicaux béninois.
-- **Hiérarchie administrative** : gestion des directions départementales, zones sanitaires et établissements.
-- **Gestion VIP** : dossiers confidentiels des hautes personnalités avec contrôle d'accès strict.
-- **Statistiques nationales** : indicateurs sanitaires complets, alertes épidémiques et export DHIS2.
-- **Langues locales** : intégration du Fon, Yoruba, Dendi et autres langues pour l'accessibilité.
-- **Gouvernance médicale** : protocoles, règles et directives officielles pour l'IA.
+- **Saisie multi-CS** : chaque Centre de Santé saisit ses données via le web ou l'application mobile.
+- **Données SMI** : Santé Maternelle et Infantile (CPN, accouchements, enfants, planification familiale, etc.).
+- **Données DPalu** : registre paludisme (dispensaire, maternité, ruptures de stock).
+- **Surveillance CER** : Compte-rendu Épidémiologique de Routine hebdomadaire (28 maladies, flambées, décès).
+- **Rapports mensuels** : C6, PNLP1, MNT, C15 — partiellement auto-calculés.
+- **Tableau de bord admin** : supervision de l'activité des CS, alertes, statistiques et exports.
+- **Formulaires personnalisés** : création de formulaires par l'admin et remplissage par les CS.
+- **Application mobile hors-ligne** : saisie sans connexion avec synchronisation différée.
+- **Super administration** : gestion multi-zones, multi-CS, administrateurs, configuration à distance.
 
 ---
 
 ## Fonctionnalités principales
 
-- **Hiérarchie administrative** : 12 directions départementales, 34 zones sanitaires, établissements de santé.
-- **IA médicale souveraine** : base de connaissances, validation par pairs, contribution d'experts.
-- **Espace contributeurs** : inscription, soumission de contributions, suivi des paiements.
-- **Patients VIP** : gestion confidentielle avec niveaux d'accès (Président, Ministre, Député, Diplomate).
-- **Gouvernance médicale** : protocoles de traitement, directives officielles, règles de l'IA.
-- **Statistiques nationales** : consultations, pathologies, indicateurs maternels, infantiles, vaccination.
-- **Alertes épidémiques** : surveillance et notification des épidémies en temps réel.
-- **Export DHIS2** : compatibilité avec le système d'information sanitaire national.
-- **Langues locales** : contribution et gouvernance linguistique pour l'accessibilité.
-- **Sécurité souveraine** : données hébergées au Bénin, chiffrement, audit logs.
+### Pour les Centres de Santé (CS)
+- Saisie journalière **SMI** et **DPalu**.
+- Surveillance épidémiologique hebdomadaire **CER**.
+- Rapports mensuels **C6, PNLP1, MNT, C15** avec pré-remplissage automatique.
+- Consultation des saisies et résumé mensuel.
+- Remplissage des formulaires personnalisés.
+- Export des données en Excel et PDF.
+
+### Pour les Administrateurs de Zone
+- Tableau de bord de l'activité des CS.
+- Statistiques et alertes (maladies, décès, flambées, paludisme).
+- Suivi du remplissage des CER et rapports.
+- Export des données brutes et des résumés.
+- Gestion des codes d'accès des CS.
+- Gestion des formulaires personnalisés.
+
+### Pour les Super Administrateurs
+- Gestion des zones sanitaires et des Centres de Santé.
+- Gestion des administrateurs et des permissions.
+- Configuration à distance de l'application mobile (feature flags, messages, contacts).
+- Upload et déploiement des mises à jour APK.
+- Sauvegarde de la base de données.
+- Journal d'activité des administrateurs.
+
+### Sécurité et déploiement
+- Authentification par rôle avec sessions sécurisées.
+- Codes d'accès à 6 chiffres pour les CS.
+- HTTPS forcé en production.
+- Rate limiting et protection CSRF.
+- Base de données SQLite avec sauvegarde manuelle.
+- Déploiement sur Hostinger via Node.js / PM2 / Nginx.
 
 Pour plus de détails, consulter :
 - [`docs/architecture.md`](docs/architecture.md)
@@ -90,19 +117,25 @@ Pour plus de détails, consulter :
 
 ## Architecture générale
 
-N'NAKI repose sur une architecture web moderne, 100% souveraine et hébergée au Bénin :
+BZ+ repose sur une architecture web + mobile légère et déployable sur des infrastructures mutualisées :
 
-- **Portail web** : HTML5, CSS3, JavaScript vanilla, Chart.js.
-- **Dashboards** : interfaces dédiées par rôle (ministère, validateurs, contributeurs, réceptionnistes).
-- **Base de connaissances IA** : validation par pairs (3/4 validateurs) avant intégration.
-- **Stockage** : données sanitaires hébergées au Bénin, localStorage pour la démo, backend à venir.
-- **Authentification** : contrôle d'accès par rôle, codes d'accès VIP, audit logs.
-- **Exports** : DHIS2, PDF, Excel pour les rapports nationaux.
-- **Déploiement** : hébergement souverain, accessible via [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+- **Backend** : Node.js / Express, EJS pour les vues, SQLite avec better-sqlite3.
+- **Frontend web** : HTML/CSS/JS, Bootstrap, Chart.js pour les statistiques.
+- **Application mobile** : Flutter (application Android BZ+).
+- **Base de données** : SQLite avec structure fidèle aux registres Excel nationaux.
+- **Authentification** : sessions Express, codes d'accès CS, mots de passe admin/super admin.
+- **Sécurité** : Helmet, rate limiting, CSP, HTTPS forcé, tokens API avec expiration.
+- **Exports** : Excel (xlsx) et PDF (pdfkit).
+- **Déploiement** : Hostinger via PM2 et Nginx, accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
 ## Technologies utilisées
+
+### Backend
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
 ### Frontend
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -110,12 +143,15 @@ N'NAKI repose sur une architecture web moderne, 100% souveraine et hébergée au
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)
 
-### Backend
-> Roadmap v2.0 : migration vers Node.js / NestJS avec base de données PostgreSQL hébergée au Bénin.
+### Mobile
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 
 ### Outils
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![PM2](https://img.shields.io/badge/PM2-2B037A?style=for-the-badge&logo=pm2&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
 ---
 
@@ -123,12 +159,11 @@ N'NAKI repose sur une architecture web moderne, 100% souveraine et hébergée au
 
 | Phase | Objectif | Statut |
 | :--- | :--- | :--- |
-| **Phase 1** | Portail web, hiérarchie administrative, statistiques nationales | Terminé |
-| **Phase 2** | IA médicale, espace contributeurs, validation par pairs | Terminé |
-| **Phase 3** | Gestion VIP, gouvernance médicale, langues locales | Terminé |
-| **Phase 4** | Backend API, base de données centralisée, authentification | En cours |
-| **Phase 5** | Mobile app, intégration terrain, synchronisation offline | À venir |
-| **Phase 6** | Expansion nationale et intégration ministérielle complète | À venir |
+| **v1.0** | Prototype de saisie web pour un Bureau de Zone | Terminé |
+| **v2.0** | Application mobile, saisie hors-ligne, formulaires personnalisés | Terminé |
+| **v2.1** | Déploiement ATZ, tableau de bord admin, statistiques, exports | En production |
+| **v2.2** | Multi-zone, synchronisation cloud, amélioration du hors-ligne | En cours |
+| **v3.0** | Intégration DHIS2/SIGASI et export vers le Ministère de la Santé | À venir |
 
 Consulter [`ROADMAP.md`](ROADMAP.md) pour le détail.
 
@@ -139,15 +174,15 @@ Consulter [`ROADMAP.md`](ROADMAP.md) pour le détail.
 > Les captures d'écran seront ajoutées progressivement dans le dossier [`assets/screenshots/`](assets/screenshots/).
 
 <div align="center">
-  <img src="assets/screenshots/placeholder.svg" alt="Portail N'NAKI placeholder" width="80%" />
-  <p><em>Portail N'NAKI — placeholder</em></p>
+  <img src="assets/screenshots/placeholder.svg" alt="Tableau de bord BZ+ placeholder" width="80%" />
+  <p><em>Tableau de bord BZ+ — placeholder</em></p>
 </div>
 
 ---
 
 ## Démo
 
-Le portail de production est accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+Le site de production est accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
@@ -162,7 +197,7 @@ Le portail de production est accessible sur [bzsante.odsysteme.tech](https://bzs
 
 ## Contact
 
-Pour toute question, partenariat ou opportunité d'investissement :
+Pour toute question, partenariat ou déploiement dans un autre Bureau de Zone :
 
 - **Email** : [contact@odsysteme.tech](mailto:contact@odsysteme.tech)
 - **LinkedIn** : [stanislas-nouemou](https://linkedin.com/in/)
@@ -171,5 +206,5 @@ Pour toute question, partenariat ou opportunité d'investissement :
 ---
 
 <div align="center">
-  <sub>N'NAKI — La santé publique béninoise, numérisée et souveraine.</sub>
+  <sub>BZ+ — La saisie sanitaire des Bureaux de Zone, simplifiée et numérisée.</sub>
 </div>
