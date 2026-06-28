@@ -1,20 +1,22 @@
-# API BZ Santé
+# API N'NAKI — BZ Santé
 
-Ce document décrit l'API publique de BZ Santé. Il est en cours de rédaction et sera enrichi au fur et à mesure du développement.
-
-> **Statut** : Version préliminaire. Les endpoints, formats et authentification sont susceptibles d'évoluer.
+Ce document décrit l'API interne de N'NAKI v1.0 et la roadmap de l'API publique v2.0.
 
 ---
 
 ## Introduction
 
-L'API BZ Santé permet aux applications mobiles, aux dashboards et aux systèmes partenaires d'interagir avec la plateforme. Elle repose sur une architecture RESTful avec authentification JWT.
+N'NAKI v1.0 est un portail web avec données gérées côté client (localStorage). L'API publique v2.0 permettra aux applications mobiles, aux dashboards et aux systèmes partenaires (DHIS2) d'interagir avec la plateforme.
 
 ---
 
-## Authentification
+## Authentification v1.0
 
-> **À compléter** : méthode d'authentification détaillée.
+La v1.0 utilise un contrôle d'accès basé sur les rôles et les codes d'accès. L'authentification formelle sera intégrée en v2.0.
+
+## Authentification v2.0 (publique)
+
+L'API publique utilisera des tokens Bearer avec gestion des rôles.
 
 ```http
 Authorization: Bearer {token}
@@ -22,7 +24,7 @@ Authorization: Bearer {token}
 
 ---
 
-## En-têtes communs
+## En-têtes communs v2.0
 
 ```http
 Content-Type: application/json
@@ -32,7 +34,7 @@ Authorization: Bearer {token}
 
 ---
 
-## Endpoints
+## Endpoints v2.0 (roadmap)
 
 ### Authentification
 
@@ -42,36 +44,50 @@ Authorization: Bearer {token}
 | POST | `/api/v1/auth/logout` | Se déconnecter |
 | GET | `/api/v1/auth/me` | Profil connecté |
 
-### Patients
+### Hiérarchie administrative
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| GET | `/api/v1/patients` | Lister les patients |
-| POST | `/api/v1/patients` | Créer un patient |
-| GET | `/api/v1/patients/{id}` | Détails d'un patient |
-| PUT | `/api/v1/patients/{id}` | Mettre à jour un patient |
+| GET | `/api/v1/departments` | Lister les directions départementales |
+| GET | `/api/v1/departments/{id}` | Détails d'une direction |
+| GET | `/api/v1/zones` | Lister les zones sanitaires |
+| GET | `/api/v1/establishments` | Lister les établissements |
 
-### Consultations
-
-| Méthode | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/v1/consultations` | Lister les consultations |
-| POST | `/api/v1/consultations` | Créer une consultation |
-| GET | `/api/v1/consultations/{id}` | Détails d'une consultation |
-
-### Synchronisation
+### Contributions IA
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| POST | `/api/v1/sync` | Envoyer les données locales au serveur |
-| GET | `/api/v1/sync` | Récupérer les données mises à jour depuis le serveur |
+| GET | `/api/v1/contributions` | Lister les contributions |
+| POST | `/api/v1/contributions` | Soumettre une contribution |
+| POST | `/api/v1/contributions/{id}/validate` | Valider une contribution |
+| POST | `/api/v1/contributions/{id}/reject` | Rejeter une contribution |
 
-### Rapports
+### Patients VIP
 
 | Méthode | Endpoint | Description |
 | :--- | :--- | :--- |
-| GET | `/api/v1/reports` | Lister les rapports disponibles |
-| GET | `/api/v1/reports/{id}` | Télécharger un rapport |
+| GET | `/api/v1/vip-patients` | Lister les patients VIP |
+| POST | `/api/v1/vip-patients` | Créer un patient VIP |
+| POST | `/api/v1/vip-access-requests` | Demander un accès VIP |
+| POST | `/api/v1/vip-access-requests/{id}/approve` | Approuver une demande |
+| GET | `/api/v1/vip-access-logs` | Journal des accès VIP |
+
+### Statistiques
+
+| Méthode | Endpoint | Description |
+| :--- | :--- | :--- |
+| GET | `/api/v1/statistics/national` | Statistiques nationales |
+| GET | `/api/v1/statistics/departments/{id}` | Statistiques par département |
+| GET | `/api/v1/indicators` | Indicateurs sanitaires |
+| GET | `/api/v1/alerts` | Alertes épidémiques |
+
+### Export
+
+| Méthode | Endpoint | Description |
+| :--- | :--- | :--- |
+| GET | `/api/v1/exports/dhis2` | Export au format DHIS2 |
+| GET | `/api/v1/exports/pdf` | Export PDF |
+| GET | `/api/v1/exports/excel` | Export Excel |
 
 ---
 
@@ -94,5 +110,6 @@ Authorization: Bearer {token}
 
 - [ ] Définir les schémas complets de requête et réponse
 - [ ] Rédiger les spécifications d'authentification
-- [ ] Documenter la logique de synchronisation offline-first
+- [ ] Documenter les flux de validation IA par pairs
+- [ ] Documenter le workflow d'accès VIP
 - [ ] Publier une collection Postman

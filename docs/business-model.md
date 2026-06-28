@@ -1,14 +1,12 @@
-# Business Model BZ Santé
+# Business Model N'NAKI — BZ Santé
 
-Ce document présente le modèle économique de BZ Santé, son marché cible, ses revenus et sa stratégie de croissance.
-
-> **Statut** : Première version. Les chiffres et projections sont des placeholders à affiner.
+Ce document présente le modèle économique de N'NAKI — BZ Santé, son marché cible, ses revenus et sa stratégie de croissance.
 
 ---
 
 ## Vision
 
-BZ Santé vise à moderniser la gestion des données de santé publique au Bénin en offrant aux agents de santé et aux superviseurs un outil numérique simple, fiable et adapté aux réalités du terrain.
+N'NAKI vise à construire une IA médicale et un système d'information sanitaire 100% souverains pour la République du Bénin. La plateforme place les données de santé des Béninois sous autorité nationale, tout en modernisant la gestion des zones sanitaires, des statistiques et de l'expertise médicale.
 
 ---
 
@@ -16,37 +14,37 @@ BZ Santé vise à moderniser la gestion des données de santé publique au Béni
 
 ### Marché primaire
 
-- **Bénin** : bureaux de zone santé, centres de santé, maternités, postes de santé.
-- **Utilisateurs** : agents de santé, infirmiers, sages-femmes, superviseurs, administrateurs sanitaires.
+- **Bénin** : Ministère de la Santé, directions départementales, 34 zones sanitaires, établissements de santé.
+- **Utilisateurs** : médecins validateurs, experts contributeurs, administrateurs, réceptionnistes, analystes.
 
 ### Segments cibles
 
-- **Agents de santé** : saisie des données sur le terrain.
-- **Superviseurs de zone** : supervision et rapports.
-- **Administrateurs sanitaires** : gestion des utilisateurs et des centres.
-- **Autorités sanitaires** : indicateurs et rapports stratégiques.
+- **Ministère de la Santé** : gouvernance, statistiques, alertes épidémiques.
+- **Experts médicaux** : contribution et validation de la base de connaissances IA.
+- **Établissements de santé** : accès aux protocoles, statistiques, dossiers VIP.
+- **Autorités sanitaires** : indicateurs stratégiques et rapports nationaux.
 
 ---
 
 ## Proposition de valeur
 
-### Pour les agents de santé
+### Pour le Ministère de la Santé
 
-- Saisie rapide des consultations et activités sur mobile.
-- Accès hors ligne indispensable en zone rurale.
-- Réduction des erreurs de saisie et des doubles emplois.
+- Souveraineté des données de santé sur le territoire béninois.
+- Statistiques nationales en temps réel.
+- Outil de décision et d'alerte épidémique.
 
-### Pour les superviseurs
+### Pour les experts médicaux
 
-- Tableaux de bord et statistiques en temps réel.
-- Génération automatique des rapports mensuels.
-- Meilleure coordination entre les centres de santé.
+- Reconnaissance et rémunération des contributions validées.
+- Participation à une IA médicale nationale.
+- Plateforme de collaboration structurée.
 
-### Pour les autorités sanitaires
+### Pour les établissements de santé
 
-- Données agrégées pour la planification et la prise de décision.
-- Suivi des indicateurs de santé publique.
-- Conformité et traçabilité des données.
+- Accès aux protocoles et directives officielles.
+- Gestion confidentielle des patients VIP.
+- Données centralisées et traçables.
 
 ---
 
@@ -54,42 +52,47 @@ BZ Santé vise à moderniser la gestion des données de santé publique au Béni
 
 | Source de revenu | Description | Statut |
 | :--- | :--- | :--- |
-| Licence par zone de santé | Abonnement annuel par bureau de zone | À définir |
-| Licence par centre de santé | Tarification par établissement | À définir |
-| Formation et support | Accompagnement des équipes de santé | À définir |
-| Intégrations ministérielles | Connecteurs avec les systèmes existants | À définir |
-| Subventions et partenariats | Appui de bailleurs de fonds santé | À définir |
+| Financement ministériel | Contrat avec le Ministère de la Santé pour le portail N'NAKI | En discussion |
+| Contributions rémunérées | Paiement des experts pour contributions validées | Actif |
+| Licences établissements | Tarification par hôpital/zone pour les modules avancés | À définir |
+| Formation et support | Accompagnement des équipes sanitaires | À définir |
+| Intégrations DHIS2 | Connecteurs avec le système d'information national | À définir |
 
 ---
 
 ## Stratégie de croissance
 
-### Phase 1 : Pilote
+### Phase 1 : Portail N'NAKI (Terminé)
 
-- Déploiement dans une zone de santé pilote au Bénin.
-- Formation des agents et collecte des retours.
-- Affinement des fonctionnalités et des workflows.
+- Déploiement du portail web et des dashboards.
+- Hiérarchie administrative, IA, contributeurs, VIP, gouvernance, langues.
 
-### Phase 2 : Expansion régionale
+### Phase 2 : Backend et centralisation
 
-- Déploiement dans plusieurs zones de santé d'une région.
-- Partenariats avec les autorités sanitaires locales.
+- Backend API et base de données centralisée au Bénin.
+- Authentification, rôles et permissions.
 
-### Phase 3 : Expansion nationale
+### Phase 3 : Mobile et terrain
 
-- Déploiement à l'échelle nationale.
-- Intégration avec les systèmes d'information du ministère de la Santé.
+- Application mobile pour agents de santé.
+- Saisie hors ligne et synchronisation.
+
+### Phase 4 : Expansion nationale
+
+- Déploiement dans les 34 zones sanitaires.
+- Intégration DHIS2 et systèmes ministériels.
 
 ---
 
 ## Indicateurs clés (KPIs)
 
-- Nombre de centres de santé utilisateurs
-- Nombre de patients enregistrés
-- Nombre de consultations saisies
-- Taux de synchronisation réussie
-- Temps moyen de génération des rapports
-- Satisfaction des agents de santé
+- Nombre de contributeurs actifs.
+- Nombre de contributions validées.
+- Nombre de pathologies en base de connaissances.
+- Nombre de patients VIP gérés.
+- Nombre de consultations et indicateurs saisis.
+- Taux de qualité des données.
+- Temps de réponse des alertes épidémiques.
 
 ---
 
@@ -97,7 +100,7 @@ BZ Santé vise à moderniser la gestion des données de santé publique au Béni
 
 > Les projections détaillées seront ajoutées dans une version ultérieure du document.
 
-- **Année 1** : pilote, 3-5 zones de santé, validation du produit.
+- **Année 1** : consolidation du portail, onboarding des contributeurs, 5-10 pathologies validées.
 - **Année 2** : expansion régionale, 20+ zones de santé.
 - **Année 3** : expansion nationale, partenariats ministériels.
 

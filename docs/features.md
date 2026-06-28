@@ -1,86 +1,89 @@
-# Fonctionnalités BZ Santé
+# Fonctionnalités N'NAKI — BZ Santé
 
-Ce document détaille les fonctionnalités principales de BZ Santé, organisées par module et par rôle utilisateur.
-
-> **Statut** : En cours de documentation. Les placeholders seront remplacés par des spécifications détaillées.
+Ce document détaille les fonctionnalités réelles de N'NAKI — BZ Santé, déployées en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
-## 1. Module Authentification
+## 1. Portail Ministériel N'NAKI
 
-- Connexion par identifiant et mot de passe
-- Rôles : agent de santé, superviseur, administrateur, analyste
-- Gestion du profil utilisateur
-- Récupération de mot de passe
-- Authentification hors ligne limitée
+- Dashboard central du Ministère de la Santé du Bénin.
+- Navigation par sections : Hiérarchie, IA Médicale, Contributeurs, Patients VIP, Gouvernance, Langues.
+- Statistiques globales en temps réel : pathologies, contributeurs, validateurs, contributions.
+- Badge de souveraineté : "100% Souverain — Données Bénin".
 
-## 2. Module Patients
+## 2. Hiérarchie Administrative
 
-- Création et gestion des dossiers patients
-- Informations démographiques (nom, âge, sexe, adresse, contact)
-- Historique des consultations
-- Recherche de patients
+- Gestion des 12 directions départementales de la Santé.
+- Gestion des 34 zones sanitaires du Bénin.
+- Gestion des établissements de santé (CHU, hôpitaux de zone, cliniques, postes de santé).
+- Cartographie et détails par département et zone.
+- Liaison entre les niveaux administratifs et les données sanitaires.
 
-## 3. Module Consultations
+## 3. IA Médicale N'NAKI
 
-- Enregistrement d'une consultation
-- Saisie des symptômes et du diagnostic
-- Prescription et traitement
-- Suivi des rendez-vous
+- Base de connaissances médicales souveraine.
+- Espace contributeurs pour experts et médecins.
+- Validation par pairs (3/4 validateurs) avant intégration.
+- Administration des contributions et des validateurs.
+- Scoring et historique des contributions.
+- Paiements aux contributeurs validés.
+- Gestion des 45+ pathologies en base.
 
-## 4. Module Maternité
+## 4. Gestion des Patients VIP
 
-- Suivi des accouchements
-- Gestion des mères et des nounés
-- Indicateurs de mortalité maternelle et néonatale
-- Historique des visites prénatales et postnatales
+- Dossiers médicaux confidentiels des hautes personnalités.
+- Niveaux d'accès : Président, Ministre, Député, Diplomate.
+- Codes d'accès spécifiques par niveau.
+- Demandes d'accès avec justification et validation.
+- Audit logs des consultations et des accès.
+- Journal des tentatives échouées et blocage automatique.
+- Gestion des codes globaux et temporaires.
 
-## 5. Module Vaccination
+## 5. Gouvernance Médicale
 
-- Calendrier vaccinal national
-- Enregistrement des doses administrées
-- Rappels de vaccination
-- Statistiques de couverture vaccinale
+- Définition des protocoles de traitement.
+- Directives officielles et règles pour l'IA.
+- Validation des protocoles par les autorités sanitaires.
+- Traçabilité des modifications et versions.
 
-## 6. Module Statistiques et Rapports
+## 6. Statistiques Nationales et Indicateurs
 
-- Tableaux de bord par zone et par centre
-- Indicateurs clés de santé publique
-- Rapports mensuels et annuels générés automatiquement
-- Exports PDF et Excel
+- Tableaux de bord national par département.
+- Indicateurs d'activité, épidémiologie, démographie.
+- Indicateurs maternels, infantiles, mortalité.
+- Suivi vaccinal par dose et par pathologie.
+- Alertes épidémiques en temps réel.
+- Graphiques et visualisations (Chart.js).
+- Export DHIS2, PDF et Excel.
+- Score de qualité des données.
 
-## 7. Module Synchronisation
+## 7. Langues Locales
 
-- Saisie hors ligne sur mobile
-- Synchronisation des données avec le serveur central
-- Gestion des conflits de données
-- File d'attente de synchronisation
-
-## 8. Module Administration
-
-- Gestion des centres de santé
-- Gestion des zones de santé
-- Gestion des utilisateurs et des rôles
-- Configuration des types de consultations et vaccins
+- Espace de contribution aux langues locales (Fon, Yoruba, Dendi, etc.).
+- Gouvernance linguistique pour l'IA médicale.
+- Traduction et validation des termes médicaux.
+- Accessibilité pour les populations non francophones.
 
 ---
 
 ## Matrice rôles / fonctionnalités
 
-| Fonctionnalité | Agent | Superviseur | Admin | Analyste |
-| :--- | :--- | :--- | :--- | :--- |
-| Saisir patients/consultations | :white_check_mark: | :x: | :x: | :x: |
-| Voir les statistiques de sa zone | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Générer des rapports | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Gérer les utilisateurs | :x: | :x: | :white_check_mark: | :x: |
-| Gérer les centres | :x: | :x: | :white_check_mark: | :x: |
-| Voir les analytics globales | :x: | :x: | :white_check_mark: | :white_check_mark: |
+| Fonctionnalité | Administrateur | Validateur | Contributeur | Réceptionniste | Analyste |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Gérer la hiérarchie administrative | :white_check_mark: | :x: | :x: | :x: | :x: |
+| Valider les contributions IA | :white_check_mark: | :white_check_mark: | :x: | :x: | :x: |
+| Soumettre des contributions IA | :x: | :white_check_mark: | :white_check_mark: | :x: | :x: |
+| Gérer les patients VIP | :white_check_mark: | :x: | :x: | :white_check_mark: | :x: |
+| Voir les statistiques nationales | :white_check_mark: | :x: | :x: | :x: | :white_check_mark: |
+| Gérer la gouvernance médicale | :white_check_mark: | :white_check_mark: | :x: | :x: | :x: |
+| Contribuer aux langues locales | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | :x: |
 
 ---
 
 ## Prochaines étapes
 
-- [ ] Spécifications détaillées de chaque module
-- [ ] Maquettes et parcours utilisateurs
-- [ ] Dictionnaire des données
-- [ ] Tests d'acceptation par module
+- [ ] Backend API et base de données centralisée
+- [ ] Authentification et gestion des rôles
+- [ ] Application mobile pour la saisie terrain
+- [ ] Intégration DHIS2 et systèmes ministériels
+- [ ] Tests d'acceptation par les autorités sanitaires

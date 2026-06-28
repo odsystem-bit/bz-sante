@@ -1,61 +1,68 @@
-# Roadmap BZ Santé
+# Roadmap N'NAKI — BZ Santé
 
-Cette feuille de route présente les grandes étapes de développement de BZ Santé. Elle est évolutive et s'adapte aux retours des utilisateurs et des partenaires sanitaires.
+Cette feuille de route présente les grandes étapes de développement de N'NAKI — BZ Santé, de la v1.0 en production à la v2.0 en développement.
 
-## Phase 1 — Fondation mobile
+---
 
-**Objectif** : permettre la saisie de base sur le terrain.
+## v1.0 — Portail N'NAKI en production
+
+**Objectif** : déployer le portail web souverain du Ministère de la Santé.
 
 - [x] Structure du dépôt public et documentation initiale
-- [ ] Application Flutter avec authentification
-- [ ] Gestion des patients et des consultations
-- [ ] Mode hors ligne avec stockage local SQLite
-- [ ] Synchronisation avec le backend
+- [x] Portail web N'NAKI avec dashboard ministériel
+- [x] Hiérarchie administrative (12 départements, 34 zones sanitaires, établissements)
+- [x] IA médicale avec espace contributeurs et validation par pairs
+- [x] Gestion des patients VIP (Président, Ministre, Député, Diplomate)
+- [x] Gouvernance médicale et protocoles
+- [x] Statistiques nationales et indicateurs sanitaires
+- [x] Alertes épidémiques et export DHIS2
+- [x] Espace langues locales (Fon, Yoruba, Dendi)
+- [x] Déploiement en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech)
 
-## Phase 2 — Backend et centralisation
+---
 
-**Objectif** : centraliser les données des zones de santé.
+## v1.x — Consolidation
 
-- [ ] Backend API sécurisé
-- [ ] Base de données centralisée
-- [ ] Gestion des utilisateurs et des rôles
-- [ ] API de synchronisation
+**Objectif** : stabiliser la production et corriger les anomalies.
 
-## Phase 3 — Dashboard et rapports
+- [ ] Correction des bugs remontés par les utilisateurs
+- [ ] Amélioration de la sécurité et de l'audit
+- [ ] Documentation métier et guides utilisateurs
+- [ ] Tests avec les autorités sanitaires
 
-**Objectif** : offrir une vision territoriale aux superviseurs.
+---
 
-- [ ] Dashboard web avec statistiques
-- [ ] Génération de rapports mensuels
-- [ ] Exports PDF et Excel
-- [ ] Tableaux de bord par zone et par centre
+## v2.0 — Backend et centralisation
 
-## Phase 4 — Modules spécialisés
+**Objectif** : migrer vers une infrastructure robuste avec backend API.
 
-**Objectif** : couvrir les besoins spécifiques de la santé publique.
+- [ ] Backend API Node.js / NestJS
+- [ ] Base de données PostgreSQL hébergée au Bénin
+- [ ] Authentification et gestion des rôles
+- [ ] API publique pour les intégrations
+- [ ] CI/CD et monitoring
 
-- [ ] Module maternité et suivi des nounés
-- [ ] Module vaccination et calendrier vaccinal
-- [ ] Module pharmacie et stock de médicaments
-- [ ] Module ressources humaines sanitaires
+---
 
-## Phase 5 — Déploiement pilote
+## v2.1 — Mobile et terrain
 
-**Objectif** : valider le produit sur le terrain.
+**Objectif** : étendre N'NAKI sur le terrain.
 
-- [ ] Déploiement dans une zone de santé pilote
-- [ ] Formation des agents de santé
-- [ ] Collecte des retours et itérations
-- [ ] Conformité avec les réglementations sanitaires
+- [ ] Application mobile pour agents de santé
+- [ ] Saisie hors ligne et synchronisation
+- [ ] Intégration des centres de santé dans les zones
+- [ ] Module patients, consultations, maternité et vaccination
 
-## Phase 6 — Expansion nationale
+---
+
+## v2.2 — Expansion nationale
 
 **Objectif** : généraliser l'usage au Bénin.
 
-- [ ] Déploiement dans plusieurs zones de santé
-- [ ] Intégration avec les systèmes ministériels
-- [ ] Adaptation aux autres régions sanitaires
+- [ ] Déploiement dans les 34 zones sanitaires
+- [ ] Intégration DHIS2 et systèmes ministériels
 - [ ] Formation et support à grande échelle
+- [ ] Partenariats internationaux et souveraineté numérique
 
 ---
 

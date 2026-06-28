@@ -1,14 +1,14 @@
 <div align="center">
-  <img src="assets/banner.svg" alt="BZ Santé Banner" width="100%" />
+  <img src="assets/banner.svg" alt="N'NAKI Banner" width="100%" />
 </div>
 
 <div align="center">
-  <img src="assets/logo/logo-placeholder.svg" alt="BZ Santé Logo" width="120" height="120" />
-  <h1>BZ Santé</h1>
-  <p><strong>Système numérique de gestion des zones sanitaires au Bénin</strong></p>
+  <img src="assets/logo/logo-placeholder.svg" alt="N'NAKI Logo" width="120" height="120" />
+  <h1>N'NAKI — BZ Santé</h1>
+  <p><strong>Plateforme souveraine d'IA médicale et de gestion sanitaire du Bénin</strong></p>
   <p>
-    <img src="https://img.shields.io/badge/Status-En%20développement-2A8A1A?style=flat-square" alt="Status" />
-    <img src="https://img.shields.io/badge/Version-0.1.0-1D3C6E?style=flat-square" alt="Version" />
+    <img src="https://img.shields.io/badge/Status-En%20production%20%28v1.0%29-2A8A1A?style=flat-square" alt="Status" />
+    <img src="https://img.shields.io/badge/Version-1.0.0-1D3C6E?style=flat-square" alt="Version" />
     <img src="https://img.shields.io/badge/License-MIT-F5A800?style=flat-square" alt="License" />
     <img src="https://img.shields.io/badge/Marché-Bénin-CC1A1A?style=flat-square" alt="Marché" />
   </p>
@@ -34,60 +34,50 @@
 
 ## Présentation
 
-**BZ Santé** (Bureau de Zone Santé) est une plateforme numérique dédiée à la gestion des activités sanitaires au niveau des zones de santé au Bénin. Elle accompagne les agents de santé, les infirmiers, les sages-femmes et les administrateurs dans la collecte, le suivi et l'analyse des données de santé.
+**N'NAKI — BZ Santé** est le portail numérique du Ministère de la Santé du Bénin pour la gestion souveraine de l'IA médicale, des données sanitaires et de la hiérarchie administrative du système de santé.
 
-L'application vise à moderniser la gestion des consultations, des maternités, des vaccinations, des statistiques et des ressources humaines des centres de santé.
+Déployé en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech), la plateforme connecte les directions départementales, les zones sanitaires, les établissements de santé, les experts médicaux contributeurs et les patients VIP sous protocole ministériel.
 
 ---
 
 ## Le problème
 
-Les bureaux de zone santé au Bénin font face à plusieurs défis :
-- Gestion des dossiers patients sur papier, difficilement consultables et partageables.
-- Absence de statistiques en temps réel pour la prise de décision.
-- Coordination limitée entre les centres de santé, les maternités et les autorités sanitaires.
-- Perte de temps et erreurs lors de la saisie et du rapprochement des données.
-- Difficulté à suivre les indicateurs de santé publique (vaccinations, accouchements, mortalité, etc.).
+Le système de santé béninois fait face à plusieurs défis :
+- Données de santé fragmentées et non sécurisées.
+- Absence d'IA médicale souveraine adaptée au contexte local.
+- Difficulté à suivre la hiérarchie administrative (12 directions, 34 zones sanitaires, établissements).
+- Gestion confidentielle des dossiers VIP (hautes personnalités, diplomates).
+- Manque d'outils de statistiques nationales et d'alertes épidémiques en temps réel.
+- Nécessité de préserver les données de santé des Béninois sur le territoire national.
 
 ---
 
 ## La solution
 
-BZ Santé propose un écosystème numérique composé de :
+N'NAKI propose un écosystème numérique 100% souverain composé de :
 
-- **Application mobile Flutter** : saisie des consultations, patients, maternités et activités sur le terrain.
-- **Dashboard web** : visualisation des statistiques, suivi des indicateurs et supervision des activités.
-- **Backend sécurisé** : gestion centralisée des données, authentification, rôles et permissions.
-- **Rapports automatiques** : génération de rapports sanitaires pour les bureaux de zone et les autorités.
-- **Gestion des utilisateurs** : rôles adaptés aux agents de santé, superviseurs et administrateurs.
+- **Portail ministériel** : dashboard central du Ministère de la Santé.
+- **IA médicale N'NAKI** : base de connaissances validée par des experts médicaux béninois.
+- **Hiérarchie administrative** : gestion des directions départementales, zones sanitaires et établissements.
+- **Gestion VIP** : dossiers confidentiels des hautes personnalités avec contrôle d'accès strict.
+- **Statistiques nationales** : indicateurs sanitaires complets, alertes épidémiques et export DHIS2.
+- **Langues locales** : intégration du Fon, Yoruba, Dendi et autres langues pour l'accessibilité.
+- **Gouvernance médicale** : protocoles, règles et directives officielles pour l'IA.
 
 ---
 
 ## Fonctionnalités principales
 
-- **Gestion des patients** : dossiers patients, historique des consultations, informations démographiques.
-- **Consultations** : enregistrement des consultations, symptômes, diagnostics et traitements.
-- **Maternité** : suivi des accouchements, des nounés et des mères.
-- **Vaccination** : calendrier vaccinal, suivi des doses et rappels.
-- **Statistiques sanitaires** : tableaux de bord par zone, par centre et par période.
-- **Rapports** : génération automatique de rapports mensuels et annuels.
-- **Gestion des utilisateurs** : agents de santé, superviseurs, administrateurs.
-- **Synchronisation** : travail hors ligne avec synchronisation lors de la connexion.
-- **Notifications** : rappels de vaccination, alertes et messages aux agents.
-
----
-
-## Architecture générale
-
-BZ Santé repose sur une architecture hybride mobile/web avec backend API :
-
-- **Application mobile** : Flutter pour Android et iOS, avec mode hors ligne.
-- **Dashboard web** : React ou Vue.js avec TailwindCSS.
-- **Backend API** : Node.js avec Express et base de données relationnelle.
-- **Base de données** : SQLite local sur mobile, base centralisée côté serveur.
-- **Authentification** : JWT avec rôles spécifiques.
-- **Rapports** : moteur de génération de PDF et d'exports Excel.
-- **Déploiement** : compatible avec hébergement mutualisé et cloud.
+- **Hiérarchie administrative** : 12 directions départementales, 34 zones sanitaires, établissements de santé.
+- **IA médicale souveraine** : base de connaissances, validation par pairs, contribution d'experts.
+- **Espace contributeurs** : inscription, soumission de contributions, suivi des paiements.
+- **Patients VIP** : gestion confidentielle avec niveaux d'accès (Président, Ministre, Député, Diplomate).
+- **Gouvernance médicale** : protocoles de traitement, directives officielles, règles de l'IA.
+- **Statistiques nationales** : consultations, pathologies, indicateurs maternels, infantiles, vaccination.
+- **Alertes épidémiques** : surveillance et notification des épidémies en temps réel.
+- **Export DHIS2** : compatibilité avec le système d'information sanitaire national.
+- **Langues locales** : contribution et gouvernance linguistique pour l'accessibilité.
+- **Sécurité souveraine** : données hébergées au Bénin, chiffrement, audit logs.
 
 Pour plus de détails, consulter :
 - [`docs/architecture.md`](docs/architecture.md)
@@ -98,24 +88,30 @@ Pour plus de détails, consulter :
 
 ---
 
+## Architecture générale
+
+N'NAKI repose sur une architecture web moderne, 100% souveraine et hébergée au Bénin :
+
+- **Portail web** : HTML5, CSS3, JavaScript vanilla, Chart.js.
+- **Dashboards** : interfaces dédiées par rôle (ministère, validateurs, contributeurs, réceptionnistes).
+- **Base de connaissances IA** : validation par pairs (3/4 validateurs) avant intégration.
+- **Stockage** : données sanitaires hébergées au Bénin, localStorage pour la démo, backend à venir.
+- **Authentification** : contrôle d'accès par rôle, codes d'accès VIP, audit logs.
+- **Exports** : DHIS2, PDF, Excel pour les rapports nationaux.
+- **Déploiement** : hébergement souverain, accessible via [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
+
+---
+
 ## Technologies utilisées
 
-### Mobile
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+### Frontend
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)
 
 ### Backend
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-
-### Base de données
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-
-### Frontend
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+> Roadmap v2.0 : migration vers Node.js / NestJS avec base de données PostgreSQL hébergée au Bénin.
 
 ### Outils
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
@@ -127,12 +123,12 @@ Pour plus de détails, consulter :
 
 | Phase | Objectif | Statut |
 | :--- | :--- | :--- |
-| **Phase 1** | Application mobile Flutter, saisie patient et consultation | En cours |
-| **Phase 2** | Backend API et synchronisation centralisée | À venir |
-| **Phase 3** | Dashboard web et rapports statistiques | À venir |
-| **Phase 4** | Module maternité et vaccination | À venir |
-| **Phase 5** | Déploiement pilote dans une zone de santé | À venir |
-| **Phase 6** | Expansion nationale et intégration ministérielle | À venir |
+| **Phase 1** | Portail web, hiérarchie administrative, statistiques nationales | Terminé |
+| **Phase 2** | IA médicale, espace contributeurs, validation par pairs | Terminé |
+| **Phase 3** | Gestion VIP, gouvernance médicale, langues locales | Terminé |
+| **Phase 4** | Backend API, base de données centralisée, authentification | En cours |
+| **Phase 5** | Mobile app, intégration terrain, synchronisation offline | À venir |
+| **Phase 6** | Expansion nationale et intégration ministérielle complète | À venir |
 
 Consulter [`ROADMAP.md`](ROADMAP.md) pour le détail.
 
@@ -143,21 +139,21 @@ Consulter [`ROADMAP.md`](ROADMAP.md) pour le détail.
 > Les captures d'écran seront ajoutées progressivement dans le dossier [`assets/screenshots/`](assets/screenshots/).
 
 <div align="center">
-  <img src="assets/screenshots/placeholder.svg" alt="Dashboard BZ Santé placeholder" width="80%" />
-  <p><em>Dashboard BZ Santé — placeholder</em></p>
+  <img src="assets/screenshots/placeholder.svg" alt="Dashboard N'NAKI placeholder" width="80%" />
+  <p><em>Dashboard N'NAKI — placeholder</em></p>
 </div>
 
 ---
 
 ## Démo
 
-Une démo publique sera disponible prochainement dans le dossier [`demo/`](demo/).
+Le portail de production est accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
 ## Liens officiels
 
-- **Site web** : [À compléter](https://)
+- **Site web** : [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech)
 - **Documentation** : [`docs/`](docs/)
 - **Portfolio** : [stanislas-nouemou](https://github.com/odsystem-bit/stanislas-nouemou)
 - **GitHub** : [bz-sante](https://github.com/odsystem-bit/bz-sante)
@@ -168,12 +164,12 @@ Une démo publique sera disponible prochainement dans le dossier [`demo/`](demo/
 
 Pour toute question, partenariat ou opportunité d'investissement :
 
-- **Email** : [À compléter](mailto:)
-- **LinkedIn** : [À compléter](https://linkedin.com/in/)
+- **Email** : [contact@odsysteme.tech](mailto:contact@odsysteme.tech)
+- **LinkedIn** : [stanislas-nouemou](https://linkedin.com/in/)
 - **GitHub** : [@odsystem-bit](https://github.com/odsystem-bit)
 
 ---
 
 <div align="center">
-  <sub>BZ Santé — La santé publique, simplifiée et numérisée.</sub>
+  <sub>N'NAKI — La santé publique béninoise, numérisée et souveraine.</sub>
 </div>

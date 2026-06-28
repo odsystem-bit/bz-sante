@@ -1,30 +1,42 @@
-# FAQ BZ Santé
+# FAQ N'NAKI — BZ Santé
 
 ## Général
 
-### Qu'est-ce que BZ Santé ?
+### Qu'est-ce que N'NAKI — BZ Santé ?
 
-BZ Santé est un système numérique de gestion des zones sanitaires au Bénin. Il permet aux agents de santé de saisir des données de patients, de consultations et d'activités, et aux superviseurs de générer des rapports et des statistiques.
+N'NAKI — BZ Santé est le portail numérique du Ministère de la Santé du Bénin pour la gestion souveraine de l'IA médicale, des données sanitaires et de la hiérarchie administrative. Il est accessible sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
-### Quel problème BZ Santé résout-il ?
+### Quel problème N'NAKI résout-il ?
 
-BZ Santé réduit la paperasse, améliore la qualité des données sanitaires, facilite la supervision et accélère la production des rapports dans les bureaux de zone santé.
+N'NAKI résout la fragmentation des données de santé, le manque d'IA médicale locale et la difficulté de gestion des zones sanitaires, tout en garantissant la souveraineté des données des Béninois.
 
-### Qui peut utiliser BZ Santé ?
+### Qui peut utiliser N'NAKI ?
 
-Les agents de santé, les superviseurs de zone, les administrateurs et les analystes sanitaires.
+- **Administrateurs** : gestion de la hiérarchie, de la gouvernance et des utilisateurs.
+- **Validateurs** : experts médicaux qui valident les contributions IA.
+- **Contributeurs** : experts qui enrichissent la base de connaissances.
+- **Réceptionnistes** : gestion des accès aux patients VIP.
+- **Analystes** : consultation des statistiques nationales.
+
+### N'NAKI est-il déjà en ligne ?
+
+Oui, la version 1.0 du portail est en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
-## Utilisation sur le terrain
+## Utilisation
 
-### L'application fonctionne-t-elle hors ligne ?
+### Comment fonctionne l'IA médicale N'NAKI ?
 
-Oui, l'application mobile Flutter permet la saisie hors ligne. Les données sont synchronisées avec le serveur central lorsque la connexion est disponible.
+Les experts soumettent des contributions médicales. Chaque contribution est validée par au moins 3 validateurs sur 4 avant d'être intégrée à la base de connaissances IA.
 
-### Quels types de données peut-on saisir ?
+### Comment sont gérés les patients VIP ?
 
-Patients, consultations, maternités, vaccinations, activités de santé publique et indicateurs.
+Les dossiers VIP sont anonymisés et protégés par des codes d'accès spécifiques. Les demandes d'accès sont justifiées et validées, avec journalisation de chaque consultation.
+
+### Quelles langues locales sont supportées ?
+
+N'NAKI intègre progressivement les langues locales du Bénin : Fon, Yoruba, Dendi, et autres. Les contributeurs peuvent proposer des traductions et termes médicaux.
 
 ---
 
@@ -32,11 +44,15 @@ Patients, consultations, maternités, vaccinations, activités de santé publiqu
 
 ### Les données de santé sont-elles protégées ?
 
-Oui, BZ Santé applique le chiffrement, l'authentification sécurisée et la journalisation des accès. Les données de santé sont traitées conformément aux principes de confidentialité.
+Oui, N'NAKI applique le chiffrement, la journalisation des accès, le contrôle des codes VIP et l'hébergement des données au Bénin. Les données des patients VIP sont particulièrement protégées.
+
+### Où sont hébergées les données ?
+
+Les données de santé sont hébergées en République du Bénin, conformément à la politique de souveraineté numérique du Ministère de la Santé.
 
 ### Qui a accès aux données ?
 
-Seuls les agents autorisés, les superviseurs de leur zone et les administrateurs peuvent accéder aux données, selon leur rôle.
+Seuls les utilisateurs autorisés selon leur rôle peuvent accéder aux données. Les accès aux dossiers VIP sont strictement contrôlés et audités.
 
 ---
 

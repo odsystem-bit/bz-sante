@@ -1,89 +1,88 @@
-# Architecture BZ Santé
+# Architecture N'NAKI — BZ Santé
 
-Ce document présente l'architecture générale de BZ Santé. Il est destiné aux investisseurs, incubateurs et développeurs souhaitant comprendre les fondations techniques du projet.
-
-> **Statut** : En cours de documentation. Certaines sections contiennent des placeholders qui seront complétées au fur et à mesure du développement.
+Ce document présente l'architecture générale de N'NAKI — BZ Santé, déployé en production sur [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech).
 
 ---
 
 ## Vue d'ensemble
 
-BZ Santé est une plateforme de gestion des données sanitaires qui connecte les agents de terrain, les superviseurs de zone et les administrateurs. Elle repose sur une architecture hybride avec synchronisation offline-first.
+N'NAKI est une plateforme web souveraine de gestion de l'IA médicale et des données sanitaires du Bénin. Elle connecte le Ministère de la Santé, les directions départementales, les zones sanitaires, les experts médicaux et les établissements de santé.
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                        Utilisateurs                         │
-│  Agent de santé    Superviseur    Admin    Analyste       │
-└──────────────────────┬────────────────────────────────────────┘
-                       │
-┌──────────────────────▼────────────────────────────────────────┐
-│                     Interfaces                                  │
-│  App Mobile Flutter    Dashboard Web    Panel Admin           │
-└──────────────────────┬────────────────────────────────────────┘
-                       │ HTTPS / Sync API
-┌──────────────────────▼────────────────────────────────────────┐
-│                      Backend API (Node.js)                    │
-│  Auth · Patients · Consultations · Rapports · Analytics       │
-└──────────────────────┬────────────────────────────────────────┘
-                       │
-        ┌──────────────┼──────────────┬──────────────┐
-        │              │              │              │
-┌───────▼──────┐ ┌────▼─────┐ ┌──────▼──────┐ ┌──────▼──────┐
-│  PostgreSQL  │ │  SQLite  │ │ File Storage│ │  Rapports   │
-│  (central)   │ │ (mobile) │ │  (exports)  │ │ (PDF/Excel) │
-└──────────────┘ └──────────┘ └─────────────┘ └─────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│                         Utilisateurs                            │
+│  Ministère    Validateurs    Contributeurs    Réceptionnistes  │
+└───────────────────────┬───────────────────────────────────────┘
+                        │
+┌───────────────────────▼───────────────────────────────────────┐
+│                      Interfaces Web                            │
+│  Portail N'NAKI · Dashboard IA · Gestion VIP · Statistiques   │
+└───────────────────────┬───────────────────────────────────────┘
+                        │ HTTPS
+┌───────────────────────▼───────────────────────────────────────┐
+│                   Backend API (roadmap v2.0)                   │
+│  Auth · Hiérarchie · Contributions IA · VIP · Statistiques     │
+└───────────────────────┬───────────────────────────────────────┘
+                        │
+        ┌───────────────┼───────────────┬───────────────┐
+        │               │               │               │
+┌───────▼──────┐ ┌──────▼──────┐ ┌──────▼──────┐ ┌──────▼──────┐
+│  PostgreSQL  │ │   Redis     │ │ File Storage│ │   DHIS2    │
+│  (souverain) │ │   (cache)   │ │  (exports)  │ │  (export)  │
+└──────────────┘ └─────────────┘ └─────────────┘ └─────────────┘
 ```
 
 ---
 
 ## Couches applicatives
 
-### 1. Application mobile Flutter
+### 1. Portail web N'NAKI
 
-- Saisie des patients, consultations, maternités et vaccinations
-- Mode hors ligne avec stockage SQLite local
-- Synchronisation automatique lors de la connexion
-- Interface adaptée aux agents de santé avec faible connectivité
+- HTML5, CSS3, JavaScript vanilla.
+- Chart.js pour les visualisations.
+- Interface responsive et thème ministériel.
+- Pages principales : portail, statistiques nationales, indicateurs complets, hiérarchie, IA, contributeurs, VIP, gouvernance, langues.
 
-### 2. Dashboard web
+### 2. Dashboards par rôle
 
-- Vue d'ensemble des indicateurs de santé par zone
-- Gestion des utilisateurs et des centres de santé
-- Génération et consultation des rapports
-- Supervision des activités en temps réel
+- **Dashboard ministériel** : statistiques nationales, alertes, hiérarchie.
+- **Dashboard validateur** : validation des contributions IA.
+- **Dashboard contributeur** : soumissions, historique, paiements.
+- **Dashboard réceptionniste** : gestion des accès patients VIP.
 
-### 3. Backend API
+### 3. Backend API (v2.0)
 
-- **Framework** : Node.js + Express
-- **Base de données** : PostgreSQL
-- **Authentification** : JWT avec rôles
-- **Synchronisation** : endpoint dédié pour la réconciliation mobile/serveur
-- **Rapports** : génération de PDF et Excel
+- **Framework** : Node.js / NestJS (roadmap).
+- **Base de données** : PostgreSQL hébergée au Bénin.
+- **Authentification** : sessions sécurisées avec rôles.
+- **Validation IA** : workflow de soumission et validation par pairs.
+- **Exports** : DHIS2, PDF, Excel.
 
 ### 4. Stockage
 
-- Données centralisées dans PostgreSQL
-- Données locales dans SQLite sur mobile
-- Fichiers d'export et rapports stockés sur disque ou cloud
+- Données sanitaires hébergées en République du Bénin.
+- localStorage utilisé pour la démonstration en v1.0.
+- Fichiers d'export et rapports stockés localement.
 
 ---
 
 ## Modèle de sécurité
 
-- Authentification JWT avec expiration
-- Rôles et permissions granulaires
-- Chiffrement des communications en HTTPS
-- Données de santé protégées et journalisées
-- Conformité aux principes de protection des données personnelles et de santé
+- Authentification par rôle avec contrôle d'accès.
+- Codes d'accès VIP spécifiques par niveau (Président, Ministre, Député, Diplomate).
+- Journalisation des accès et des tentatives échouées.
+- Blocage automatique après tentatives répétées.
+- Données de santé chiffrées et hébergées localement.
+- Conformité aux principes de protection des données personnelles et de santé.
 
 ---
 
 ## Scalabilité
 
-- Synchronisation incrémentale pour limiter la charge réseau
-- Mise en cache des données fréquemment consultées
-- Architecture modulaire facilitant l'évolution
-- Préparation au déploiement cloud
+- Architecture modulaire facilitant l'évolution.
+- Cache Redis pour les données fréquemment consultées.
+- Préparation au déploiement cloud souverain.
+- Export incrémental vers DHIS2.
 
 ---
 
@@ -92,15 +91,16 @@ BZ Santé est une plateforme de gestion des données sanitaires qui connecte les
 | Environnement | Usage | Statut |
 | :--- | :--- | :--- |
 | Local | Développement | Actif |
-| Staging | Tests et recettes | À venir |
-| Production | Déploiement public | À venir |
+| Production v1.0 | [bzsante.odsysteme.tech](https://bzsante.odsysteme.tech) | Actif |
+| Staging v2.0 | Tests et recettes | À venir |
+| Production v2.0 | Backend API + base centralisée | À venir |
 
 ---
 
 ## Prochaines étapes documentaires
 
 - [ ] Schéma détaillé de la base de données
-- [ ] Diagrammes de séquence des flux de synchronisation
+- [ ] Diagrammes de séquence des flux critiques (validation IA, accès VIP)
 - [ ] Spécification des endpoints API
 - [ ] Matrice des rôles et permissions
-- [ ] Plan de déploiement et de formation
+- [ ] Plan de déploiement souverain et de monitoring
