@@ -4,12 +4,9 @@ Ce document détaille les fonctionnalités réelles de N'NAKI — BZ Santé, dé
 
 ---
 
-## 1. Portail Ministériel N'NAKI
+## 1. Portail N'NAKI
 
-- Dashboard central du Ministère de la Santé du Bénin.
-- Navigation par sections : Hiérarchie, IA Médicale, Contributeurs, Patients VIP, Gouvernance, Langues.
-- Statistiques globales en temps réel : pathologies, contributeurs, validateurs, contributions.
-- Badge de souveraineté : "100% Souverain — Données Bénin".
+- Accès centralisé aux modules sanitaires et à la gouvernance.
 
 ## 2. Hiérarchie Administrative
 

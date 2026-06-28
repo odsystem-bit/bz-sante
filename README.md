@@ -56,7 +56,7 @@ Le système de santé béninois fait face à plusieurs défis :
 
 N'NAKI propose un écosystème numérique 100% souverain composé de :
 
-- **Portail ministériel** : dashboard central du Ministère de la Santé.
+- **Portail N'NAKI** : accès centralisé aux modules sanitaires.
 - **IA médicale N'NAKI** : base de connaissances validée par des experts médicaux béninois.
 - **Hiérarchie administrative** : gestion des directions départementales, zones sanitaires et établissements.
 - **Gestion VIP** : dossiers confidentiels des hautes personnalités avec contrôle d'accès strict.
@@ -139,8 +139,8 @@ Consulter [`ROADMAP.md`](ROADMAP.md) pour le détail.
 > Les captures d'écran seront ajoutées progressivement dans le dossier [`assets/screenshots/`](assets/screenshots/).
 
 <div align="center">
-  <img src="assets/screenshots/placeholder.svg" alt="Dashboard N'NAKI placeholder" width="80%" />
-  <p><em>Dashboard N'NAKI — placeholder</em></p>
+  <img src="assets/screenshots/placeholder.svg" alt="Portail N'NAKI placeholder" width="80%" />
+  <p><em>Portail N'NAKI — placeholder</em></p>
 </div>
 
 ---

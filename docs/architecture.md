@@ -38,19 +38,11 @@ N'NAKI est une plateforme web souveraine de gestion de l'IA médicale et des don
 
 ### 1. Portail web N'NAKI
 
-- HTML5, CSS3, JavaScript vanilla.
-- Chart.js pour les visualisations.
-- Interface responsive et thème ministériel.
-- Pages principales : portail, statistiques nationales, indicateurs complets, hiérarchie, IA, contributeurs, VIP, gouvernance, langues.
+- HTML5, CSS3, JavaScript vanilla, Chart.js.
+- Interface responsive organisée par modules fonctionnels.
+- Accès adapté aux rôles (administration, validation, contribution, réception).
 
-### 2. Dashboards par rôle
-
-- **Dashboard ministériel** : statistiques nationales, alertes, hiérarchie.
-- **Dashboard validateur** : validation des contributions IA.
-- **Dashboard contributeur** : soumissions, historique, paiements.
-- **Dashboard réceptionniste** : gestion des accès patients VIP.
-
-### 3. Backend API (v2.0)
+### 2. Backend API (v2.0)
 
 - **Framework** : Node.js / NestJS (roadmap).
 - **Base de données** : PostgreSQL hébergée au Bénin.
@@ -58,7 +50,7 @@ N'NAKI est une plateforme web souveraine de gestion de l'IA médicale et des don
 - **Validation IA** : workflow de soumission et validation par pairs.
 - **Exports** : DHIS2, PDF, Excel.
 
-### 4. Stockage
+### 3. Stockage
 
 - Données sanitaires hébergées en République du Bénin.
 - localStorage utilisé pour la démonstration en v1.0.
